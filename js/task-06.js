@@ -1,15 +1,11 @@
-const inputElem = document.querySelector("#validation-input");
-
-inputElem.addEventListener("blue", validText);
-const validLength = Number(inputElem.dataset.length);
-console.log(validLength);
-
-function validText() {
-    if (inputElem.value.length === validLength) {
-        inputElem.classList.add("valid");
-        inputElem.classList.remove("invalid");
-    } else {
-        inputElem.classList.remove("valid");
-        inputElem.classList.add("invalid");
-    }
+const inputElem = document.getElementById("validation-input");
+const requiredLength = Number(inputElem.getAttribute("data-length"));
+inputElem.addEventListener("blur", onInputBlur);
+function onInputBlur(event) {
+  inputElem.classList.remove("valid", "invalid");
+  if (requiredLength === event.currentTarget.value.length) {
+    inputElem.classList.add("valid");
+  } else {
+    inputElem.classList.add("invalid");
+  }
 }

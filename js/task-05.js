@@ -1,11 +1,11 @@
 const inputElement = document.querySelector("#name-input");
-const spanElement = document.querySelector("name-output");
-inputElement.addEventListener("input", newName);
+const spanElement = document.querySelector("#name-output");
+const defaultName = spanElement.textContent;
 
-function newName() {
-    if (inputElement.value) {
-        spanElement.textContent = inputElement.value;
+inputElement.addEventListener("input", (event) => {
+    if (inputElement.value === "" ) {
+        spanElement.textContent = defaultName;
     } else {
-        spanElement.textContent = "Anonymous";
+        spanElement.textContent = event.currentTarget.value;
     }
-}
+} );
